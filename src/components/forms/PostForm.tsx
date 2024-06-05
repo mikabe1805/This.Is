@@ -64,7 +64,7 @@ const PostForm = ({ post }: PostFormProps ) => {
           name="caption"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="shad-form_label">Caption</FormLabel>
+              <FormLabel className="shad-form_label">Note</FormLabel>
               <FormControl>
                 <Textarea className="shad-textarea custom-scrollbar" {...field} />
               </FormControl>

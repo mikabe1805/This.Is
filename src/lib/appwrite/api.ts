@@ -113,7 +113,7 @@ export async function createPost(post: INewPost) {
 
         if(!uploadedFile) throw Error;
 
-        const fileUrl = getFilePreview(uploadedFile.$id);
+        const fileUrl = await getFilePreview(uploadedFile.$id);
 
         if (!fileUrl) {
             deleteFile(uploadedFile.$id);
@@ -127,14 +127,14 @@ export async function createPost(post: INewPost) {
         // Save post to database
         const newPost = await databases.createDocument(
             appwriteConfig.databaseId,
-            appwriteConfig.experiencesCollectionId,
+            appwriteConfig.postsCollectionId,
             ID.unique(),
             {
                 creator: post.userId,
-                note: post.caption,
+                caption: post.caption,
                 imageUrl: fileUrl,
                 imageId: uploadedFile.$id,
-                hub: post.location,
+                location: post.location,
                 tags: tags
             }
         )
@@ -179,7 +179,7 @@ export async function deleteFile(fileId: string) {
 export async function getRecentPosts() {
     const posts = await databases.listDocuments(
         appwriteConfig.databaseId,
-        appwriteConfig.experiencesCollectionId,
+        appwriteConfig.postsCollectionId,
         [Query.orderDesc('$createdAt'), Query.limit(20)]
     )
     

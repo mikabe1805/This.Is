@@ -10,6 +10,7 @@ export const appwriteConfig = {
     listsCollectionId: import.meta.env.VITE_APPWRITE_LISTS_COLLECTION_ID,
     hubsCollectionId: import.meta.env.VITE_APPWRITE_HUBS_COLLECTION_ID,
     experiencesCollectionId: import.meta.env.VITE_APPWRITE_EXPERIENCES_COLLECTION_ID,
+    postsCollectionId: import.meta.env.VITE_APPWRITE_POSTS_COLLECTION_ID,
     commentsCollectionId: import.meta.env.VITE_APPWRITE_COMMENTS_COLLECTION_ID,
 }
 
